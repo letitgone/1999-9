@@ -1,5 +1,8 @@
 package list;
 
+import list.test.Test;
+import list.test.TestParam;
+import list.test.Tester;
 import net.mindview.util.CountingGenerator;
 import net.mindview.util.CountingIntegerList;
 import net.mindview.util.Generated;
@@ -19,7 +22,7 @@ public class ListPerformance {
     static {
         tests.add(new Test<List<Integer>>("add") {
             @Override
-            int test(List<Integer> list, TestParam tp) {
+            protected int test(List<Integer> list, TestParam tp) {
                 int loops = tp.loops;
                 int listSize = tp.size;
                 for (int i = 0; i < loops; i++) {
@@ -33,7 +36,7 @@ public class ListPerformance {
         });
         tests.add(new Test<List<Integer>>("get") {
             @Override
-            int test(List<Integer> list, TestParam tp) {
+            protected int test(List<Integer> list, TestParam tp) {
                 int loops = tp.loops * reps;
                 int listSize = list.size();
                 for (int i = 0; i < loops; i++) {
@@ -44,7 +47,7 @@ public class ListPerformance {
         });
         tests.add(new Test<List<Integer>>("set") {
             @Override
-            int test(List<Integer> list, TestParam tp) {
+            protected int test(List<Integer> list, TestParam tp) {
                 int loops = tp.loops * reps;
                 int listSize = list.size();
                 for (int i = 0; i < loops; i++) {
@@ -55,7 +58,7 @@ public class ListPerformance {
         });
         tests.add(new Test<List<Integer>>("iteradd") {
             @Override
-            int test(List<Integer> list, TestParam tp) {
+            protected int test(List<Integer> list, TestParam tp) {
                 final int LOOPS = 1000000;
                 int half = list.size() / 2;
                 ListIterator<Integer> it = list.listIterator(half);
@@ -67,7 +70,7 @@ public class ListPerformance {
         });
         tests.add(new Test<List<Integer>>("insert") {
             @Override
-            int test(List<Integer> list, TestParam tp) {
+            protected int test(List<Integer> list, TestParam tp) {
                 int loops = tp.loops;
                 for (int i = 0; i < loops; i++) {
                     list.add(5, 47);
@@ -77,7 +80,7 @@ public class ListPerformance {
         });
         tests.add(new Test<List<Integer>>("remove") {
             @Override
-            int test(List<Integer> list, TestParam tp) {
+            protected int test(List<Integer> list, TestParam tp) {
                 int loops = tp.loops;
                 int size = tp.size;
                 for (int i = 0; i < loops; i++) {
@@ -93,7 +96,7 @@ public class ListPerformance {
 
         qTests.add(new Test<LinkedList<Integer>>("addFirst") {
             @Override
-            int test(LinkedList<Integer> list, TestParam tp) {
+            protected int test(LinkedList<Integer> list, TestParam tp) {
                 int loops = tp.loops;
                 int size = tp.size;
                 for (int i = 0; i < loops; i++) {
@@ -107,7 +110,7 @@ public class ListPerformance {
         });
         qTests.add(new Test<LinkedList<Integer>>("addLast") {
             @Override
-            int test(LinkedList<Integer> list, TestParam tp) {
+            protected int test(LinkedList<Integer> list, TestParam tp) {
                 int loops = tp.loops;
                 int size = tp.size;
                 for (int i = 0; i < loops; i++) {
@@ -121,7 +124,7 @@ public class ListPerformance {
         });
         qTests.add(new Test<LinkedList<Integer>>("rmFirst") {
             @Override
-            int test(LinkedList<Integer> list, TestParam tp) {
+            protected int test(LinkedList<Integer> list, TestParam tp) {
                 int loops = tp.loops;
                 int size = tp.size;
                 for (int i = 0; i < loops; i++) {
@@ -136,7 +139,7 @@ public class ListPerformance {
         });
         qTests.add(new Test<LinkedList<Integer>>("rmLast") {
             @Override
-            int test(LinkedList<Integer> list, TestParam tp) {
+            protected int test(LinkedList<Integer> list, TestParam tp) {
                 int loops = tp.loops;
                 int size = tp.size;
                 for (int i = 0; i < loops; i++) {

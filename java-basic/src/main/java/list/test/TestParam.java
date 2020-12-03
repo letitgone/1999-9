@@ -1,4 +1,4 @@
-package list;
+package list.test;
 
 /**
  * @Author ZhangGJ
