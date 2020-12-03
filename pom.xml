@@ -12,5 +12,12 @@
         <module>java-basic</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.tij</groupId>
+            <artifactId>TinkingInJava</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
 
 </project>
