@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>java-basic</module>
+        <module>algorithms</module>
     </modules>
 
     <dependencies>
