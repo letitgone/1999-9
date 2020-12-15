@@ -19,6 +19,11 @@
             <artifactId>TinkingInJava</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.alg</groupId>
+            <artifactId>Algorithms</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 </project>
