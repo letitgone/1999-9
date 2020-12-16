@@ -1,4 +1,4 @@
-package list;
+package stack;
 
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
@@ -6,49 +6,49 @@ import edu.princeton.cs.algs4.StdOut;
 import java.util.Stack;
 
 /**
- * ( 1 + ( ( 2 + 3 ) * ( 4 * 5 ) ) )
+ * ( 1 + ( ( 6 - 3 ) * ( 10 / 5 ) ) )
  *
  * @Author ZhangGJ
  * @Date 2020/12/15 07:24
  */
 public class Evaluate {
     public static void main(String[] args) {
-        Stack<String> ops = new Stack<String>();
-        Stack<Double> vals = new Stack<Double>();
+        Stack<String> operator = new Stack<>();
+        Stack<Double> value = new Stack<>();
 
         while (!StdIn.isEmpty()) {
             String s = StdIn.readString();
             if (s.equals("(")) {
                 ;
             } else if (s.equals("+")) {
-                ops.push(s);
+                operator.push(s);
             } else if (s.equals("-")) {
-                ops.push(s);
+                operator.push(s);
             } else if (s.equals("*")) {
-                ops.push(s);
+                operator.push(s);
             } else if (s.equals("/")) {
-                ops.push(s);
+                operator.push(s);
             } else if (s.equals("sqrt")) {
-                ops.push(s);
+                operator.push(s);
             } else if (s.equals(")")) {
-                String op = ops.pop();
-                double v = vals.pop();
+                String op = operator.pop();
+                double v = value.pop();
                 if (op.equals("+")) {
-                    v = vals.pop()        + v;
+                    v = value.pop() + v;
                 } else if (op.equals("-")) {
-                    v = vals.pop() - v;
+                    v = value.pop() - v;
                 } else if (op.equals("*")) {
-                    v = vals.pop() * v;
+                    v = value.pop() * v;
                 } else if (op.equals("/")) {
-                    v = vals.pop() / v;
+                    v = value.pop() / v;
                 } else if (op.equals("sqrt")) {
                     v = Math.sqrt(v);
                 }
-                vals.push(v);
+                value.push(v);
             } else {
-                vals.push(Double.parseDouble(s));
+                value.push(Double.parseDouble(s));
             }
         }
-        StdOut.println(vals.pop());
+        StdOut.println(value.pop());
     }
 }
