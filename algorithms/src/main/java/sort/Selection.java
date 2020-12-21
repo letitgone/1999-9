@@ -26,5 +26,6 @@ public class Selection {
 
     public static void main(String[] args) {
         System.out.println(Arrays.toString(sort(new Integer[] {2, 6, 1, 8, 9})));
+        System.out.println();
     }
 }
