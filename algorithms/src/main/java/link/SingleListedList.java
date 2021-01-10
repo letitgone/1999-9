@@ -82,4 +82,18 @@ public class SingleListedList<E> {
         }
     }
 
+    /**
+     * 链表搜索
+     *
+     * @param e
+     * @return
+     */
+    public Node<E> search(E e) {
+        Node<E> node = first;
+        while (node != null && node.item != e) {
+            node = node.next;
+        }
+        return node;
+    }
+
 }

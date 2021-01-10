@@ -30,6 +30,11 @@ public class Stack<Item> implements Iterable<Item> {
         return n;
     }
 
+    /**
+     * 元素压入表头
+     *
+     * @param item
+     */
     public void push(Item item) {
         Node oldFirst = first;
         first = new Node();
@@ -38,6 +43,11 @@ public class Stack<Item> implements Iterable<Item> {
         n++;
     }
 
+    /**
+     * 表头弹出
+     *
+     * @return
+     */
     public Item pop() {
         Item item = first.item;
         first = first.next;
