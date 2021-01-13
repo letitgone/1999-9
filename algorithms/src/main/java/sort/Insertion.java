@@ -1,5 +1,7 @@
 package sort;
 
+import sort.template.Example;
+
 import java.util.Arrays;
 
 /**
