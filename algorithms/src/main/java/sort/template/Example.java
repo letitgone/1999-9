@@ -17,10 +17,20 @@ public class Example {
         return (v.compareTo(w) < 0);
     }
 
-    public static void exchange(Comparable[] a, int i, int j) {
+    public static boolean less(int v, int w) {
+        return (v - w < 0);
+    }
+
+    public static void exchange(Comparable[] a, int i, int min) {
         Comparable swap = a[i];
-        a[i] = a[j];
-        a[j] = swap;
+        a[i] = a[min];
+        a[min] = swap;
+    }
+
+    public static void exchange(int[] arr, int i, int min) {
+        int swap = arr[i];
+        arr[i] = arr[min];
+        arr[min] = swap;
     }
 
     public static void show(Comparable[] a) {

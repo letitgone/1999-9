@@ -7,7 +7,7 @@ import java.util.Objects;
  * @Author ZhangGJ
  * @Date 2021/01/13 07:49
  */
-public class SelectionSort implements Serializable, Comparable {
+public class SelectionSort implements Serializable, Comparable<SelectionSort> {
 
     private static final long serialVersionUID = 7340229669380539614L;
 
@@ -54,8 +54,8 @@ public class SelectionSort implements Serializable, Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        return compare(this, (SelectionSort) o);
+    public int compareTo(SelectionSort o) {
+        return compare(this, o);
     }
 
     private int compare(SelectionSort o, SelectionSort o1) {
