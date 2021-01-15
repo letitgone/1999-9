@@ -21,6 +21,10 @@ public class Example {
         return (v - w < 0);
     }
 
+    public static boolean less(double v, double w) {
+        return (v - w < 0);
+    }
+
     public static void exchange(Comparable[] a, int i, int min) {
         Comparable swap = a[i];
         a[i] = a[min];
@@ -29,6 +33,12 @@ public class Example {
 
     public static void exchange(int[] arr, int i, int min) {
         int swap = arr[i];
+        arr[i] = arr[min];
+        arr[min] = swap;
+    }
+
+    public static void exchange(double[] arr, int i, int min) {
+        double swap = arr[i];
         arr[i] = arr[min];
         arr[min] = swap;
     }

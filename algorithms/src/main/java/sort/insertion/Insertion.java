@@ -30,7 +30,7 @@ public class Insertion {
         return arr;
     }
 
-    public static Comparable<?>[] sort(Comparable<?>[] arr) {
+    public static double[] sort(double[] arr) {
         int len = arr.length;
         for (int i = 1; i < len; i++) {
             for (int j = i; j > 0 && less(arr[j], arr[j - 1]); j--) {
@@ -40,27 +40,15 @@ public class Insertion {
         return arr;
     }
 
-//    // put smallest element in position to serve as sentinel
-//    int exchanges = 0;
-//        for (int i = n-1; i > 0; i--) {
-//        if (less(a[i], a[i-1])) {
-//            exch(a, i, i-1);
-//            exchanges++;
-//        }
-//    }
-//        if (exchanges == 0) return;
-//
-//
-//    // insertion sort with half-exchanges
-//        for (int i = 2; i < n; i++) {
-//        Comparable v = a[i];
-//        int j = i;
-//        while (less(v, a[j-1])) {
-//            a[j] = a[j-1];
-//            j--;
-//        }
-//        a[j] = v;
-//    }
+    public static Comparable<?>[] sort(Comparable<?>[] arr) {
+        int len = arr.length;
+        for (int i = 1; i < len; i++) {
+            for (int j = i; j > 0 && less(arr[j], arr[j - 1]); j--) {
+                exchange(arr, j, j - 1);
+            }
+        }
+        return arr;
+    }
 
     public static void main(String[] args) {
         System.out.println(Arrays.toString(sort(new Integer[] {2, 6, 1, 8, 9})));
@@ -75,7 +63,7 @@ public class Insertion {
             selectionSort.setName("Test" + i);
         }
         System.out.println(Arrays.toString(sort(selectionSorts)));
-        int[] arr = {2, 6, 1, 8, 9};
+        int[] arr = {6, 5, 9, 3, 1, 7};
         System.out.println(Arrays.toString(sort(arr)));
     }
 }
