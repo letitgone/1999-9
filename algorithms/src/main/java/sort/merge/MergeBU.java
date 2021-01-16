@@ -8,30 +8,24 @@ import java.util.Random;
 import static sort.template.Example.less;
 
 /**
- * 归并排序（自顶向下的原地归并）
- * 要将一个数组排序，可以先递归地将它分成两半分别查询，然后将结果归并起来
+ * 自底向上的归并排序
  *
  * @Author ZhangGJ
- * @Date 2021/01/16 11:54
+ * @Date 2021/01/17 06:24
  */
-public class Merge {
+public class MergeBU {
 
     private static Comparable<?>[] aux;
 
     public static Comparable<?>[] sort(Comparable<?>[] arr) {
-        aux = new Comparable<?>[arr.length];
-        sort(arr, 0, arr.length - 1);
-        return arr;
-    }
-
-    private static void sort(Comparable<?>[] a, int lo, int hi) {
-        if (hi <= lo) {
-            return;
+        int len = arr.length;
+        aux = new Comparable<?>[len];
+        for (int sz = 1; sz < len; sz = sz + sz) {
+            for (int lo = 0; lo < len - sz; lo += sz + sz) {
+                merge(arr, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, len - 1));
+            }
         }
-        int mid = lo + (hi - lo) / 2;
-        sort(a, lo, mid);
-        sort(a, mid + 1, hi);
-        merge(a, lo, mid, hi);
+        return arr;
     }
 
     private static void merge(Comparable<?>[] arr, int lo, int mid, int hi) {

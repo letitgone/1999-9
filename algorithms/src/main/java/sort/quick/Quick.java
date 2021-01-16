@@ -1,59 +1,56 @@
-package sort.merge;
+package sort.quick;
 
+import edu.princeton.cs.algs4.StdRandom;
 import sort.selection.SelectionSort;
 
 import java.util.Arrays;
 import java.util.Random;
 
+import static sort.template.Example.exchange;
 import static sort.template.Example.less;
 
 /**
- * 归并排序（自顶向下的原地归并）
- * 要将一个数组排序，可以先递归地将它分成两半分别查询，然后将结果归并起来
- *
  * @Author ZhangGJ
- * @Date 2021/01/16 11:54
+ * @Date 2021/01/17 06:42
  */
-public class Merge {
-
-    private static Comparable<?>[] aux;
+public class Quick {
 
     public static Comparable<?>[] sort(Comparable<?>[] arr) {
-        aux = new Comparable<?>[arr.length];
+        StdRandom.shuffle(arr);
         sort(arr, 0, arr.length - 1);
         return arr;
     }
 
-    private static void sort(Comparable<?>[] a, int lo, int hi) {
+    private static void sort(Comparable<?>[] arr, int lo, int hi) {
         if (hi <= lo) {
             return;
         }
-        int mid = lo + (hi - lo) / 2;
-        sort(a, lo, mid);
-        sort(a, mid + 1, hi);
-        merge(a, lo, mid, hi);
+        int j = partition(arr, lo, hi);
+        sort(arr, lo, j - 1);
+        sort(arr, j + 1, hi);
     }
 
-    private static void merge(Comparable<?>[] arr, int lo, int mid, int hi) {
-        /*
-         * 将a[lo...mid] 和 a[mid + 1 ... hi]归并
-         */
-        int i = lo, j = mid + 1;
-
-        for (int k = lo; k <= hi; k++) {
-            aux[k] = arr[k];
-        }
-        for (int k = lo; k <= hi; k++) {
-            if (i > mid) {
-                arr[k] = aux[j++];
-            } else if (j > hi) {
-                arr[k] = aux[i++];
-            } else if (less(aux[j], aux[i])) {
-                arr[k] = aux[j++];
-            } else {
-                arr[k] = aux[i++];
+    private static int partition(Comparable<?>[] arr, int lo, int hi) {
+        int i = lo, j = hi + 1;
+        Comparable<?> v = arr[lo];
+        while (true) {
+            while (less(arr[++i], v)) {
+                if (i == hi) {
+                    break;
+                }
             }
+            while (less(v, arr[--j])) {
+                if (j == lo) {
+                    break;
+                }
+            }
+            if (i >= j) {
+                break;
+            }
+            exchange(arr, i, j);
         }
+        exchange(arr, lo, j);
+        return j;
     }
 
     public static void main(String[] args) {
