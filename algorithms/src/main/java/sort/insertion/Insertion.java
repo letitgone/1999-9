@@ -20,50 +20,64 @@ import static sort.template.Example.less;
  */
 public class Insertion {
 
-    public static int[] sort(int[] arr) {
-        int len = arr.length;
-        for (int i = 1; i < len; i++) {
-            for (int j = i; j > 0 && less(arr[j], arr[j - 1]); j--) {
-                exchange(arr, j, j - 1);
-            }
-        }
-        return arr;
-    }
+	public static int[] sort2(int[] arr) {
+		for (int j = 1; j < arr.length; j++) {
+			int key = arr[j];
+			int i = j - 1;
+			while (i >= 0 && arr[i] > key) {
+				arr[i + 1] = arr[i];
+				--i;
+			}
+			arr[i + 1] = key;
+		}
+		return arr;
+	}
 
-    public static double[] sort(double[] arr) {
-        int len = arr.length;
-        for (int i = 1; i < len; i++) {
-            for (int j = i; j > 0 && less(arr[j], arr[j - 1]); j--) {
-                exchange(arr, j, j - 1);
-            }
-        }
-        return arr;
-    }
+	public static int[] sort(int[] arr) {
+		int len = arr.length;
+		for (int i = 1; i < len; i++) {
+			for (int j = i; j > 0 && less(arr[j], arr[j - 1]); j--) {
+				exchange(arr, j, j - 1);
+			}
+		}
+		return arr;
+	}
 
-    public static Comparable<?>[] sort(Comparable<?>[] arr) {
-        int len = arr.length;
-        for (int i = 1; i < len; i++) {
-            for (int j = i; j > 0 && less(arr[j], arr[j - 1]); j--) {
-                exchange(arr, j, j - 1);
-            }
-        }
-        return arr;
-    }
+	public static double[] sort(double[] arr) {
+		int len = arr.length;
+		for (int i = 1; i < len; i++) {
+			for (int j = i; j > 0 && less(arr[j], arr[j - 1]); j--) {
+				exchange(arr, j, j - 1);
+			}
+		}
+		return arr;
+	}
 
-    public static void main(String[] args) {
-        System.out.println(Arrays.toString(sort(new Integer[] {2, 6, 1, 8, 9})));
-        System.out.println(Arrays.toString(sort(new String[] {"er", "qw", "ab", "zg", "ue"})));
-        SelectionSort[] selectionSorts =
-                new SelectionSort[] {new SelectionSort(), new SelectionSort(), new SelectionSort(),
-                        new SelectionSort(), new SelectionSort()};
-        for (int i = 0; i < selectionSorts.length; i++) {
-            SelectionSort selectionSort = selectionSorts[i];
-            Random random = new Random();
-            selectionSort.setId(random.nextInt(100));
-            selectionSort.setName("Test" + i);
-        }
-        System.out.println(Arrays.toString(sort(selectionSorts)));
-        int[] arr = {6, 5, 9, 3, 1, 7};
-        System.out.println(Arrays.toString(sort(arr)));
-    }
+	public static Comparable<?>[] sort(Comparable<?>[] arr) {
+		int len = arr.length;
+		for (int i = 1; i < len; i++) {
+			for (int j = i; j > 0 && less(arr[j], arr[j - 1]); j--) {
+				exchange(arr, j, j - 1);
+			}
+		}
+		return arr;
+	}
+
+	public static void main(String[] args) {
+		System.out.println(Arrays.toString(sort(new Integer[] {2, 6, 1, 8, 9})));
+		System.out.println(Arrays.toString(sort(new String[] {"er", "qw", "ab", "zg", "ue"})));
+		SelectionSort[] selectionSorts =
+				new SelectionSort[] {new SelectionSort(), new SelectionSort(), new SelectionSort(),
+						new SelectionSort(), new SelectionSort()};
+		for (int i = 0; i < selectionSorts.length; i++) {
+			SelectionSort selectionSort = selectionSorts[i];
+			Random random = new Random();
+			selectionSort.setId(random.nextInt(100));
+			selectionSort.setName("Test" + i);
+		}
+		System.out.println(Arrays.toString(sort(selectionSorts)));
+		int[] arr = {31, 41, 59, 26, 41, 58};
+		System.out.println(Arrays.toString(sort(arr)));
+		System.out.println(Arrays.toString(sort2(arr)));
+	}
 }
