@@ -20,6 +20,12 @@ import static sort.template.Example.less;
  */
 public class Insertion {
 
+	/**
+	 * 算法导论
+	 *
+	 * @param arr
+	 * @return
+	 */
 	public static int[] sort2(int[] arr) {
 		for (int j = 1; j < arr.length; j++) {
 			int key = arr[j];
@@ -33,6 +39,12 @@ public class Insertion {
 		return arr;
 	}
 
+	/**
+	 * 算法
+	 *
+	 * @param arr
+	 * @return
+	 */
 	public static int[] sort(int[] arr) {
 		int len = arr.length;
 		for (int i = 1; i < len; i++) {
