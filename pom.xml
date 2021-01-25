@@ -12,6 +12,7 @@
         <module>java-basic</module>
         <module>algorithms</module>
         <module>concurrency</module>
+        <module>design-pattern</module>
     </modules>
 
     <dependencies>
