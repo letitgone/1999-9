@@ -24,6 +24,28 @@ import static sort.template.Example.less;
 public class Selection {
 
     /**
+     * 算法导论
+     *
+     * @param arr
+     * @return
+     */
+    public static int[] sort2(int[] arr) {
+        int n = arr.length;
+        for (int j = 0; j < n - 1; j++) {
+            int smallest = j;
+            for (int i = j + 1; i < n; i++) {
+                if (arr[i] < arr[smallest]) {
+                    smallest = i;
+                }
+            }
+            int temp = arr[j];
+            arr[j] = arr[smallest];
+            arr[smallest] = temp;
+        }
+        return arr;
+    }
+
+    /**
      * 存储最小值的索引
      *
      * @param arr
